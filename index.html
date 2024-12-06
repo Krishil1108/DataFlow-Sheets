@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheet Management</title>
+    <!-- Include SheetJS from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+<body>
+
+    <!-- Sheet Actions -->
+    <div id="sheetAction">
+        <button id="newSheetBtn" onclick="createNewSheet()">Create New Sheet</button>
+        <button id="openSheetBtn" onclick="openExistingSheet()">Open Existing Sheet</button>
+    </div>
+
+    <!-- Existing Sheets List -->
+    <div id="existingSheets" style="display: none;">
+        <h3>Choose an Existing Sheet:</h3>
+        <ul id="sheetList"></ul>
+        <button onclick="showSheetAction()">Back to Actions</button>
+    </div>
+
+    <!-- Sheet Form -->
+    <div id="sheetForm" style="display: none;">
+        <h3 id="sheetFormTitle"></h3>
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName">
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity">
+        <br>
+        <label for="rate">Rate:</label>
+        <input type="number" id="rate">
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" disabled>
+        <br>
+        <button onclick="saveData()">Save</button>
+        <button onclick="exportToExcel()">Export to Excel</button>
+        <button onclick="showSheetAction()">Back to Actions</button>
+    </div>
+
+    <!-- Display Existing Data -->
+    <div id="dataContainer"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

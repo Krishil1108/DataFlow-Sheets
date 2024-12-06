@@ -1,0 +1,235 @@
+/* Define root variables for easy customization */
+:root {
+    --primary-color: #4CAF50;
+    --primary-dark: #388E3C;
+    --accent-color: #ff6f61;
+    --background-color: #f3f3f3;
+    --container-bg: #ffffff;
+    --button-padding: 12px 28px;
+    --input-padding: 15px;
+    --border-radius: 12px;
+    --font-size: 18px;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    --button-gradient: linear-gradient(135deg, #4CAF50, #45a049);
+    --focus-border-color: #4CAF50;
+    --input-border-color: #ddd;
+    --input-focus-color: #ff6f61;
+    --list-hover-color: #fffcf7;
+    --list-bg-color: #f9f9f9;
+    --transition-speed: 0.3s;
+    --shadow-hover: 0px 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* General body styles */
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 40px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container with flexible width, responsive layout, and soft rounded corners */
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--container-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all var(--transition-speed) ease-in-out;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+}
+
+/* Button styling with vibrant gradient and hover effects */
+button {
+    padding: var(--button-padding);
+    margin: 10px 0;
+    border: none;
+    background: var(--button-gradient);
+    color: white;
+    font-size: var(--font-size);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    box-shadow: var(--shadow-hover);
+}
+
+button:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Input fields with full width, soft border, and glowing focus effect */
+input {
+    width: 100%;
+    padding: var(--input-padding);
+    margin: 10px 0;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size);
+    background-color: #fff;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+input:focus {
+    border-color: var(--input-focus-color);
+    outline: none;
+    box-shadow: 0 0 8px var(--input-focus-color);
+}
+
+input[readonly] {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
+/* Styling for the list of sheets with hover effect and animations */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 15px;
+    margin: 12px 0;
+    background-color: var(--list-bg-color);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.05);
+}
+
+li:hover {
+    background-color: var(--list-hover-color);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Add extra space and styling to the data rows */
+#dataContainer {
+    margin-top: 30px;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    overflow: hidden;
+}
+
+.data-row:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Add margin between individual fields */
+.data-row p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+    text-align: left;
+    line-height: 1.5;
+}
+
+/* Add specific margin for individual fields */
+.data-row .product-name,
+.data-row .quantity,
+.data-row .rate,
+.data-row .amount {
+    margin-right: 30px; /* Adds more space between fields */
+}
+
+.data-row .label {
+    font-weight: bold;
+    color: var(--primary-dark);
+}
+
+/* Create a separator line between data rows */
+.data-row .separator {
+    margin: 0 10px;
+    height: 20px;
+    width: 2px;
+    background-color: #ddd;
+}
+
+/* A separator for styling between sections */
+hr {
+    margin-top: 20px;
+    border: 0;
+    border-top: 2px solid #ddd;
+}
+
+/* Add responsiveness for mobile devices */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+    }
+
+    input {
+        padding: 14px;
+    }
+
+    li {
+        padding: 14px;
+    }
+
+    .data-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .data-row .separator {
+        display: none;
+    }
+
+    /* Add margin between fields for smaller devices */
+    .data-row .product-name,
+    .data-row .quantity,
+    .data-row .rate,
+    .data-row .amount {
+        margin-right: 0;
+        margin-bottom: 10px; /* Adds space between fields on small screens */
+    }
+}
+
+/* Add smooth scrolling to body */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Create a hover animation for the title of the form */
+h3 {
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+h3:hover {
+    color: var(--primary-color);
+    transform: translateY(-5px);
+}
