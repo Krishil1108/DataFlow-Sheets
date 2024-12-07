@@ -62,7 +62,7 @@ function loadSheet(sheetName) {
     displayExistingData(currentSheet);
 }
 
-// Display the existing data in the form
+// Display the existing data in the form with a Delete button for each item
 function displayExistingData(sheetData) {
     const dataContainer = document.getElementById("dataContainer");
     dataContainer.innerHTML = ''; // Clear existing entries
@@ -76,11 +76,25 @@ function displayExistingData(sheetData) {
             <p><strong>Quantity:</strong> ${data.quantity}</p>
             <p><strong>Rate:</strong> ${data.rate}</p>
             <p><strong>Amount:</strong> ${data.amount}</p>
+            <button onclick="deleteData(${index})">Delete</button>
             <hr>
         `;
 
         dataContainer.appendChild(row);
     });
+}
+
+// Function to delete the data from the list
+function deleteData(index) {
+    if (confirm("Are you sure you want to delete this data?")) {
+        // Remove the data at the specified index
+        currentSheet.splice(index, 1);
+        localStorage.setItem("sheets", JSON.stringify(sheets));
+        alert("Data deleted successfully!");
+
+        // Display the updated data
+        displayExistingData(currentSheet);
+    }
 }
 
 // Save data (either in new sheet or append to existing sheet)

@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
     <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
     <!-- Sheet Actions -->
@@ -26,11 +27,21 @@
     <!-- Sheet Form -->
     <div id="sheetForm" style="display: none;">
         <h3 id="sheetFormTitle"></h3>
-        <label for="productName">Product Name:</label>
-        <input type="text" id="productName">
+        <label for="productName">Particulars:</label>
+            <select id="productName">
+                <option value="Fan Point">Fan Point</option>
+                <option value="Light Point">Light Point</option>
+                <option value="1.5 sqmm line">1.5 sqmm line</option>
+                <option value="2.5 sqmm line">2.5 sqmm line</option>
+                <option value="4 sqmm line">4 sqmm line</option>
+                <option value="Fan fitting">Fan fitting</option>
+                <option value="Cat-6 cable">Cat-6 cable</option>
+            </select>
         <br>
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity">
+        <div class="quantity-controls">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" value="1" min="1">
+        </div>
         <br>
         <label for="rate">Rate:</label>
         <input type="number" id="rate">
@@ -47,5 +58,21 @@
     <div id="dataContainer"></div>
 
     <script src="app.js"></script>
+    <script>
+        // Add event listeners for the quantity control buttons
+        document.getElementById("increaseQuantity").addEventListener("click", function() {
+            const quantityField = document.getElementById("quantity");
+            quantityField.value = parseInt(quantityField.value) + 1;
+            calculateAmount();
+        });
+
+        document.getElementById("decreaseQuantity").addEventListener("click", function() {
+            const quantityField = document.getElementById("quantity");
+            if (parseInt(quantityField.value) > 1) {
+                quantityField.value = parseInt(quantityField.value) - 1;
+            }
+            calculateAmount();
+        });
+    </script>
 </body>
 </html>

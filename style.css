@@ -181,8 +181,8 @@ hr {
     }
 
     button {
-        width: 100%;
-        padding: 14px;
+        width: 30%;
+        padding: 24px;
     }
 
     input {
@@ -233,3 +233,41 @@ h3:hover {
     color: var(--primary-color);
     transform: translateY(-5px);
 }
+
+/* Dropdown menu styles */
+select {
+    width: 100%;
+    padding: var(--input-padding);
+    margin: 10px 0;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    font-size: var(--font-size);
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+select:focus {
+    border-color: var(--input-focus-color);
+    outline: none;
+    box-shadow: 0 0 8px var(--input-focus-color);
+}
+
+/* Updated quantity input to match the style of rate and amount boxes */
+.quantity-controls input {
+    width: 100%;
+    padding: var(--input-padding);
+    font-size: var(--font-size);
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+/* Remove any specific flexbox styling that was previously applied */
+.quantity-controls {
+    display: block;
+    margin: 10px 0;
+}
+
