@@ -1,37 +1,38 @@
 /* Define root variables for easy customization */
 :root {
-    --primary-color: #4CAF50;
-    --primary-dark: #388E3C;
-    --accent-color: #ff6f61;
-    --background-color: #f3f3f3;
+    --primary-color: #fbb150;
+    --primary-dark: #249032;
+    --accent-color: #3e8b97;
+    --background-color: #fcf9f9;
     --container-bg: #ffffff;
-    --button-padding: 12px 28px;
-    --input-padding: 15px;
-    --border-radius: 12px;
-    --font-size: 18px;
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    --button-gradient: linear-gradient(135deg, #4CAF50, #45a049);
+    --button-padding: 15px 24px;
+    --input-padding: 10px;
+    --border-radius: 8px;
+    --font-size: 16px;
+    --font-family: 'Poppins', sans-serif;
+    --box-shadow: 0 8px 20px rgba(7, 199, 62, 0.1);
+    --button-gradient: linear-gradient( #3152d8, #4548a0);
     --focus-border-color: #4CAF50;
     --input-border-color: #ddd;
     --input-focus-color: #ff6f61;
     --list-hover-color: #fffcf7;
     --list-bg-color: #f9f9f9;
-    --transition-speed: 0.3s;
+    --transition-speed: 0.4s;
     --shadow-hover: 0px 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* General body styles */
 body {
     font-family: var(--font-family);
-    background-color: var(--background-color);
+    background-color:white
+    ;
     margin: 0;
     padding: 40px;
     color: #333;
     line-height: 1.6;
 }
 
-/* Container with flexible width, responsive layout, and soft rounded corners */
+/* Container styling */
 .container {
     max-width: 700px;
     margin: 0 auto;
@@ -43,7 +44,7 @@ body {
     background: linear-gradient(135deg, #ffffff, #f9f9f9);
 }
 
-/* Button styling with vibrant gradient and hover effects */
+/* Buttons with animations */
 button {
     padding: var(--button-padding);
     margin: 10px 0;
@@ -53,33 +54,35 @@ button {
     font-size: var(--font-size);
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    transition: all var(--transition-speed) ease;
     box-shadow: var(--shadow-hover);
 }
 
 button:hover {
-    background-color: var(--accent-color);
-    transform: scale(1.1);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    background: var(--accent-color);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Input fields with full width, soft border, and glowing focus effect */
+/* Input field styling */
 input {
-    width: 100%;
+    width: 80%;
     padding: var(--input-padding);
     margin: 10px 0;
-    border: 1px solid var(--input-border-color);
+    border: 2px solid var(--input-border-color);
     border-radius: var(--border-radius);
     font-size: var(--font-size);
-    background-color: #fff;
-    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    background: #fefefe;
+    transition: all var(--transition-speed) ease;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 input:focus {
     border-color: var(--input-focus-color);
+    box-shadow: 0 0 12px var(--input-focus-color), inset 0 2px 4px rgba(0, 0, 0, 0.1);
     outline: none;
-    box-shadow: 0 0 8px var(--input-focus-color);
+    transform: scale(1.05);
 }
 
 input[readonly] {
@@ -87,7 +90,7 @@ input[readonly] {
     cursor: not-allowed;
 }
 
-/* Styling for the list of sheets with hover effect and animations */
+/* Remove list-style pointers */
 ul {
     list-style: none;
     padding: 0;
@@ -100,174 +103,53 @@ li {
     background-color: var(--list-bg-color);
     cursor: pointer;
     border-radius: var(--border-radius);
-    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.05);
+    transition: all var(--transition-speed) ease;
+    box-shadow: var(--shadow-hover);
 }
 
 li:hover {
-    background-color: var(--list-hover-color);
+    background: var(--list-hover-color);
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Add extra space and styling to the data rows */
-#dataContainer {
-    margin-top: 30px;
-}
-
-.data-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    margin: 20px 0;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: var(--box-shadow);
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    overflow: hidden;
-}
-
-.data-row:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-}
-
-/* Add margin between individual fields */
-.data-row p {
-    margin: 0;
-    font-size: 16px;
-    color: #555;
-    text-align: left;
-    line-height: 1.5;
-}
-
-/* Add specific margin for individual fields */
-.data-row .product-name,
-.data-row .quantity,
-.data-row .rate,
-.data-row .amount {
-    margin-right: 30px; /* Adds more space between fields */
-}
-
-.data-row .label {
-    font-weight: bold;
-    color: var(--primary-dark);
-}
-
-/* Create a separator line between data rows */
-.data-row .separator {
-    margin: 0 10px;
-    height: 20px;
-    width: 2px;
-    background-color: #ddd;
-}
-
-/* A separator for styling between sections */
-hr {
-    margin-top: 20px;
-    border: 0;
-    border-top: 2px solid #ddd;
-}
-
-/* Add responsiveness for mobile devices */
-@media (max-width: 768px) {
-    body {
-        padding: 20px;
-    }
-
-    .container {
-        width: 100%;
-        padding: 20px;
-    }
-
-    button {
-        width: 30%;
-        padding: 24px;
-    }
-
-    input {
-        padding: 14px;
-    }
-
-    li {
-        padding: 14px;
-    }
-
-    .data-row {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .data-row .separator {
-        display: none;
-    }
-
-    /* Add margin between fields for smaller devices */
-    .data-row .product-name,
-    .data-row .quantity,
-    .data-row .rate,
-    .data-row .amount {
-        margin-right: 0;
-        margin-bottom: 10px; /* Adds space between fields on small screens */
-    }
-}
-
-/* Add smooth scrolling to body */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Create a hover animation for the title of the form */
-h3 {
-    font-size: 24px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
-}
-
-h3:hover {
-    color: var(--primary-color);
-    transform: translateY(-5px);
-}
-
-/* Dropdown menu styles */
+/* Dropdown menu styling */
 select {
-    width: 100%;
+    width: 80%;
     padding: var(--input-padding);
-    margin: 10px 0;
-    border: 1px solid var(--input-border-color);
+    border: 2px solid var(--input-border-color);
     border-radius: var(--border-radius);
-    background-color: #fff;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
     font-size: var(--font-size);
-    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all var(--transition-speed) ease;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 select:focus {
     border-color: var(--input-focus-color);
+    box-shadow: 0 0 12px var(--input-focus-color), inset 0 2px 4px rgba(0, 0, 0, 0.1);
     outline: none;
-    box-shadow: 0 0 8px var(--input-focus-color);
+    transform: scale(1.05);
 }
 
-/* Updated quantity input to match the style of rate and amount boxes */
-.quantity-controls input {
-    width: 100%;
-    padding: var(--input-padding);
-    font-size: var(--font-size);
-    border: 1px solid var(--input-border-color);
-    border-radius: var(--border-radius);
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+select:hover {
+    transform: translateY(-2px);
+    background: #f9f9f9;
 }
 
-/* Remove any specific flexbox styling that was previously applied */
-.quantity-controls {
-    display: block;
-    margin: 10px 0;
-}
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
 
+    button {
+        width: 100%;
+    }
+
+    input, select {
+        width: 100%;
+    }
+}
