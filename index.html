@@ -6,6 +6,8 @@
     <title>Sheet Management</title>
     <!-- Include SheetJS from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,30 +15,42 @@
 
     <!-- Sheet Actions -->
     <div id="sheetAction">
-        <button id="newSheetBtn" onclick="createNewSheet()">Create New Sheet</button>
-        <button id="openSheetBtn" onclick="openExistingSheet()">Open Existing Sheet</button>
+        <button id="newSheetBtn">Create New Sheet</button>
+        <button id="openSheetBtn">Open Existing Sheet</button>
+        <button id="quotationGeneratorBtn">Quotation Generator</button>
     </div>
 
     <!-- Existing Sheets List -->
     <div id="existingSheets" style="display: none;">
         <h3>Choose an Existing Sheet:</h3>
         <ul id="sheetList"></ul>
-        <button onclick="showSheetAction()">Back to Actions</button>
+        <button id="backToActionsBtn">Back to Actions</button>
     </div>
 
     <!-- Sheet Form -->
     <div id="sheetForm" style="display: none;">
         <h3 id="sheetFormTitle"></h3>
         <label for="productName">Particulars:</label>
-            <select id="productName">
-                <option value="Fan Point">Fan Point</option>
-                <option value="Light Point">Light Point</option>
-                <option value="1.5 sqmm line">1.5 sqmm line</option>
-                <option value="2.5 sqmm line">2.5 sqmm line</option>
-                <option value="4 sqmm line">4 sqmm line</option>
-                <option value="Fan fitting">Fan fitting</option>
-                <option value="Cat-6 cable">Cat-6 cable</option>
-            </select>
+        <select id="productName">
+            <option value="Fan Point">Fan Point</option>
+            <option value="Light Point">Light Point</option>
+            <option value="1.5 sqmm line">1.5 sqmm line</option>
+            <option value="2.5 sqmm line">2.5 sqmm line</option>
+            <option value="4 sqmm line">4 sqmm line</option>
+            <option value="Fan fitting">Fan fitting</option>
+            <option value="Cat-6 cable">Cat-6 cable</option>
+            <option value="Two-Way Point">Two-Way Point</option>
+            <option value="LED Panel fitting">LED Panel fitting</option>
+            <option value="Anchor Fastener">Anchor Fastener</option>
+            <option value="COB light fitting">COB light fitting</option>
+            <option value="Speaker Fitting">Speaker Fitting</option>
+            <option value="Jhoomar fitting">Jhoomar fitting</option>
+            <option value="Hanging light fitting">Hanging light fitting</option>
+            <option value="5Amp Socket Point">5Amp Socket Point</option>
+            <option value="15Amp Socket Point">15Amp Socket Point</option>
+            <option value="ELCB"> ELCB</option>
+        </select>
+        <input type="text" id="customProductName" placeholder="Enter custom particular" style="margin-left: 10px;">
         <br>
         <div class="quantity-controls">
             <label for="quantity">Quantity:</label>
@@ -49,30 +63,23 @@
         <label for="amount">Amount:</label>
         <input type="text" id="amount" disabled>
         <br>
-        <button onclick="saveData()">Save</button>
-        <button onclick="exportToExcel()">Export to Excel</button>
-        <button onclick="showSheetAction()">Back to Actions</button>
+        <button id="saveDataBtn">Save</button>
+        <button id="exportToExcelBtn">Export to Excel</button>
+        <button id="backToActionsFromFormBtn">Back to Actions</button>
+    </div>
+
+    <!-- Quotation Generator Section -->
+    <div id="quotationGenerator" style="display: none;">
+        <h3>Available Sheets for Quotation:</h3>
+        <ul id="quotationSheetList"></ul>
+        <br>
+        <button id="generateQuotationBtn">Generate Quotation</button>
+        <button id="backToActionsFromQuotationBtn">Back to Actions</button>
     </div>
 
     <!-- Display Existing Data -->
     <div id="dataContainer"></div>
 
     <script src="app.js"></script>
-    <script>
-        // Add event listeners for the quantity control buttons
-        document.getElementById("increaseQuantity").addEventListener("click", function() {
-            const quantityField = document.getElementById("quantity");
-            quantityField.value = parseInt(quantityField.value) + 1;
-            calculateAmount();
-        });
-
-        document.getElementById("decreaseQuantity").addEventListener("click", function() {
-            const quantityField = document.getElementById("quantity");
-            if (parseInt(quantityField.value) > 1) {
-                quantityField.value = parseInt(quantityField.value) - 1;
-            }
-            calculateAmount();
-        });
-    </script>
 </body>
 </html>
